@@ -64,28 +64,28 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 from sklearn.naive_bayes import GaussianNB
 from sklearn import metrics
 def apprendre_mlflow(i):
-    mlflow.set_experiment(experiment_name='Experiment')
-    mlflow.set_tracking_uri("http://localhost:5000")
-    with mlflow.start_run():
-        gnb = GaussianNB()
+#    mlflow.set_experiment(experiment_name='Experiment')
+ #   mlflow.set_tracking_uri("http://localhost:5000")
+  #  with mlflow.start_run():
+   gnb = GaussianNB()
 # Entrainer
-        gnb.fit(X_train, y_train)
+   gnb.fit(X_train, y_train)
 # Predire
-        y_naive_bayes1 = gnb.predict(X_train)
+   y_naive_bayes1 = gnb.predict(X_train)
 # Métriques
-        accuracy = metrics.accuracy_score(y_train, y_naive_bayes1)
-        print("Accuracy du modele Naive Bayes predit: " + str(accuracy))
-        mlflow.log_param('Accuracy', accuracy)
+   accuracy = metrics.accuracy_score(y_train, y_naive_bayes1)
+   print("Accuracy du modele Naive Bayes predit: " + str(accuracy))
+        #mlflow.log_param('Accuracy', accuracy)
 
-        recall_score = metrics.recall_score(y_train, y_naive_bayes1)
-        print("recall score du modele Naive Bayes predit: " + str(recall_score))
-        mlflow.log_param('recall_score', recall_score)
+   recall_score = metrics.recall_score(y_train, y_naive_bayes1)
+   print("recall score du modele Naive Bayes predit: " + str(recall_score))
+      #  mlflow.log_param('recall_score', recall_score)
     
-        f1_score = metrics.f1_score(y_train, y_naive_bayes1)
-        print("F1 score du modele Naive Bayes predit: " + str(f1_score))
-        mlflow.log_param('f1_score', f1_score)
-        mlflow.sklearn.log_model(gnb, "model")
-    return gnb
+   f1_score = metrics.f1_score(y_train, y_naive_bayes1)
+   print("F1 score du modele Naive Bayes predit: " + str(f1_score))
+       # mlflow.log_param('f1_score', f1_score)
+       # mlflow.sklearn.log_model(gnb, "model")
+   return gnb
 
 
 # In[29]:
